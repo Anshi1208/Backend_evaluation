@@ -6,5 +6,4 @@ const courseSchema = new mongoose.Schema({
     diffculty:{type:String, required:true},
     description:{type:String, required:true},
 })
-const  Course = mongoose.model('Course', courseSchema);
-module.exports = Course
+module.exports  = mongoose.model('Course', courseSchema);

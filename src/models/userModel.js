@@ -5,12 +5,5 @@ const userSchema = new mongoose.Schema({
     password: {type: String, required: true},
     enrolledCourses : [{type : String}],
 })
-userSchema.pre('save', async function (next){
-    if(!this.isModified('password')){
-        return next()
-    }
-    this.password = await bcrypt.hash(this.password, 10);
-    next()
-});
-const User = mongoosoe.model('User', userSchema);
-module.exports = User;
+
+module.exports = mongoose.model('User', userSchema);
