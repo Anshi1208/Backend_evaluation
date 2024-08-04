@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv')
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const courseRoutes = require('./src/routes/courseRoutes');
+const userRoutes = require('./src/routes/userRoutes');
+const errorHandler = require('./src/middleware/errorMiddleware');
 
 dotenv.config();
 const app = express();
@@ -12,13 +15,11 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 
 //this is for routes
-const courseRoutes = require('./src/routes/courseRoutes');
-const userRoutes = require('./src/routes/userRoutes')
 
 app.use('/api/courses', courseRoutes);
 app.use('/api/users', userRoutes);
 
-const errorHandler = require('./src/middleware/errorMiddleware');
+
 app.use(errorHandler)
 
 
